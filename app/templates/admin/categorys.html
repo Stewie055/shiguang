@@ -1,0 +1,30 @@
+{% extends 'admin/base.html' %}
+{% block management %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+<h1 class="page-header">Dashboard</h1>
+<a  class="btn btn-primary" href={{ url_for('admin.edit_category') }}>新建</a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>description</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for item in categorys %}
+            <tr>
+                <th>{{ item.id }}</th>
+                <th>{{ item.name }}</th>
+                <th>{{ item.description }}</th>
+                <th><a  class="btn btn-warning" href={{ url_for('admin.edit_category',category_id=item.id) }}>编辑</a></th>
+            </tr>
+    
+        {% endfor %}
+    </table>
+</div>
+</div>
+
+
+{% endblock %}

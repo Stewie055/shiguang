@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+{% block management %}
+<div class="container">
+      <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ user.username }}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td>用户名:</td>
+                            <td>{{ user.username }}</td>
+                        </tr>
+                      <tr>
+                        <td>邮箱:</td>
+                        <td>{%if user.email %}{{ user.email }}{% endif %}</td>
+                      </tr>
+                      <tr>
+                        <td>昵称:</td>
+                        <td>{% if user.nick %}{{ user.nick }}{% endif %}</td>
+                      </tr>
+                      <tr>
+                        <td>性别:</td>
+                        <td>{% if user.gender=='male' %}男{% elif user.gender=='female' %}女{% endif %}</td>
+                      </tr>
+                      <tr>
+                          <td>年龄:</td>
+                          <td>{%if user.age%}{{ user.age }}{% endif %}</td>
+                      </tr>
+                      <tr>
+                          <td>学院:</td>
+                          <td>{% if user.department %}{{ user.department }}{% endif %}</td>
+                      </tr>
+                      <tr>
+                        <td>电话:</td>
+                        <td>{%if user.phone %}{{ user.phone }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <td>QQ:</td>
+                        <td>{%if user.qq %}{{ user.qq }}{% endif %}</td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                      <a href={{ url_for('admin.edit_user',user_id=user.id) }} class="btn btn-primary">修改</a>
+
+                  
+                </div>
+              </div>
+            </div>
+                             
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+

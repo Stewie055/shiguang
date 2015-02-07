@@ -1,0 +1,88 @@
+{% extends "admin/base.html" %}
+{% block management %}
+<div class="container">
+      <div class="row">
+          <br>
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ form.username.data }}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                    <form class="form-horizontal" action={{ url_for('admin.edit_user',user_id=user.id) }} role="form" method="post">
+                        {{ form.csrf_token }}
+ 
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputusername" name="username" {% if form.username.data %} value={{ form.username.data }} {% endif %}> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">邮箱</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputemail" name="email" {% if form.email.data %} value={{ form.email.data }} {% endif %}> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">昵称</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputnick" name="nick" {% if form.nick.data %} value={{ form.nick.data }} {% endif %}> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="gender">
+                                    <option value="male" {% if form.gender.data=='male' %} selected {% endif %}>男</option>
+                                    <option value="female"  {% if form.gender.       data=='female' %} selected {% endif %}>女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">年龄</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="inputage" name="age"  {% if form.age.data %} value={{ form.age.data }} {% endif %}>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">学院</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputdepart" name="department"  {% if form.department.data %} value={{ form.department.data }} {% endif %}>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="inputphone" name="phone"  {% if form.phone.data %} value={{ form.phone.data }} {% endif %}>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">QQ</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputqq" name="qq"  {% if form.qq.data %} value={{ form.qq.data }} {% endif %}>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-9">
+                                <button type="submit" class="btn btn-primary">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                     
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+

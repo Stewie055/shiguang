@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <form method="post" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    <label class="control-label" for="inputName">title</label>
+                    <input type=text id="inputName" required name="title" class="form-control">
+                </div>
+                <div class="form-gruop">
+                    <label class="control-label" for="chooseCategory">分类</label>
+                    <select class="form-control" name="category_id" id="chooseCategory">
+                        {% for category in categorys %}
+                        <option value={{ category.id }}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="inputAbstract">content</label>
+                    <textarea name="content" required class="form-control" rows=3></textarea>
+                </div>
+                <!--div class="form-group">
+                    <label class="control-label" for="uploadfile">图片</label>
+                    <input type=file name="pic" required class="formcontrol"-->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

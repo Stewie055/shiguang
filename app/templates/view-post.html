@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3" name="category">
+                <p class="lead">分类</p>
+                <div class="list-group">
+                    <a href="/" class="list-group-item">所有</a>
+                    <a href="/category/1" class="list-group-item">分类 1</a>
+                    <a href="/category/2" class="list-group-item">分类 2</a>
+                    <a href="/category/3" class="list-group-item">分类 3</a>
+                </div>
+            </div>
+            
+            <!--  Content  -->
+            
+            <div class="col-md-9">
+
+                <div class="thumbnail">
+                    <!--img class="img-responsive" src="{#{url_for('.static',filename="image/"+item.filename) }#}" alt=""-->
+                    <div class="caption-full">
+                        <!--h4 class="pull-right">备注</h4-->
+                    <h4><a href="#">{{ post.title }}</a>
+                        </h4>
+                        <div class="content">
+                            {{ post.content | safe }}
+                        </div>
+                    </div>
+                    <div class="ratings hidden">
+                        <p class="pull-right">3 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            4.0 stars
+                        </p>
+                    </div>
+                </div>
+
+                <div class="well">
+                    <div class="comment">
+                        <form class="form-horizontal" method="post" enctype="multipart/form-datai">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-1 control-label">昵称</label>
+                                <div class="col-sm-3">
+                                <input type="text" required class="form-control" id="inputName" name="nick">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputComment" class="col-sm-1 control-label">评论</label>
+                                <div class="col-sm-10">
+                                <textarea class="form-control" required rows="3" id="inputComent" name="comment"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-1 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">发表</button>
+                                </div>
+                            </div>
+                        </form> 
+                        {#% for comment in comments %}
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="bold">{{ comment.nick }}:</span>
+                                <span class="pull-right">{{ comment.time }}</span>
+                                <p>{{ comment.text }}</p>
+                            </div>
+                        </div>
+                        {% endfor %#}
+                    </div>
+                </div>
+
+                            
+            
+                  </div>
+            <!-- End of Row -->
+            </div>
+            
+            <!--  End of Content  -->
+            {% endblock %}
+
+
+

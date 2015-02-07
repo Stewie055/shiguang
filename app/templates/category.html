@@ -1,0 +1,48 @@
+{% from '_helpers.html' import show_cat %}
+{% extends "base.html" %}
+{% block content %}
+<!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3" name="category">
+                <p class="lead">分类</p>
+                <div class="list-group">
+                    {{ show_cat(categorys) }}
+                </div>
+            </div>
+    <div class="col-md-9" name="showcase">
+
+                
+                <div class="row">
+                    {% for item in  posts %}
+                    <div class="col-sm-4 col-lg-4 col-md-4 case">
+                        <div class="thumbnail gallery">
+                            <!--img src="{#{ url_for(".static",filename="image/"+item.filename)}#}" alt=""-->
+                            <div class="caption">
+                                <h4 class="pull-right"></h4>
+                                <h4><a href="{{url_for('view_post',post_id=item.id)}}"><p>{{ item.title }}</p></a>
+                                </h4>
+                                <div class="description">
+                                    {{- item.content[0:65] -}}...
+                                </div>
+                            </div>
+                            <div class="ratings hidden">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!--/div> <!--row-->
+                {% endblock %}
+

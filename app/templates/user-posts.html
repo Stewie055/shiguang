@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% from '_helpers.html' import render_pagination %}
+{% block content %}
+<div class="container">
+        <div class="row">
+
+<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+    <h2>作品</h2>
+    <hr>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>标题</th>
+                <th>创建日期</th>
+                <th>comments count</th>
+                {% if current_user.id==user.id %}
+                <th>操作</th>
+                {% endif %}
+            </tr>
+        </thead>
+        {% for post in pagination.items %}
+            <tr>
+                <th><a href={{ post.url }}>{{ post.title }}</a></th>
+                <th>{{ post.date_published }}</th>
+                <th></th>
+                {% if current_user.id==user.id %}
+                <th><a  class="btn btn-warning" href={{ url_for('edit_post',post_id=post.id) }}>编辑</a>
+                    <a  class="btn btn-danger" href={{ url_for('delete_post',post_id=post.id) }}>删除</a></th>
+                {% endif %}
+            </tr>
+    
+        {% endfor %}
+    </table>
+    {{ render_pagination(pagination,'view_user_posts',username=user.username) }}
+</div>
+
+{% endblock %}

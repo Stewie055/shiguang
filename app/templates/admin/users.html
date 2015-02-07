@@ -1,0 +1,39 @@
+{% extends 'admin/base.html' %}
+{% from '_helpers.html' import render_pagination %}
+{% block management %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+<h1 class="page-header">用户</h1>
+<a  class="btn btn-primary" href={{ url_for('register') }}>新建</a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>username</th>
+                <th>email</th>
+                <th>date_joined</th>
+                <th>nick</th>
+                <th>more</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        {% for user in pagination.items %}
+            <tr>
+                <th>{{ user.id }}</th>
+                <th>{{ user.username }}</th>
+                <th>{{ user.email }}</th>
+                <th>{{ user.date_joined }}</th>
+                <th>{{ user.nick }}</th>
+                <th><a class="btn btn-primary" href={{ url_for('admin.user_detail',user_id=user.id) }}>more</a></th>
+                <th><a  class="btn btn-warning" href={{ url_for('admin.edit_user',user_id=user.id) }}>编辑</a>
+              <a  class="btn btn-danger" href='#' }}>封禁</a></th>
+            </tr>
+    
+        {% endfor %}
+    </table>
+    {{ render_pagination(pagination,'admin.show_users') }}
+</div>
+</div>
+
+
+{% endblock %}

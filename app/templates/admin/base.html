@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+   {% block head %}
+    <!-- Custom styles for this template -->
+    <link href={{ url_for('static',filename='css/dashboard.css') }} rel="stylesheet">
+    {% endblock %}
+    {% block content %}
+<div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                     <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                     <li><a href={{ url_for('admin.show_categorys') }}>分类</a></li>
+                     <li><a href={{ url_for('admin.show_users') }}>用户</a></li>
+                     <li><a href={{ url_for('admin.show_posts') }}>文章</a></li>
+                 </ul>
+            </div>
+        {% block management %}{% endblock %}
+        </div>
+
+    </div>
+    {% endblock %}
+    
